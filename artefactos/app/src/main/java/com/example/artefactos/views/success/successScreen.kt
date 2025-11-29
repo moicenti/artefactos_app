@@ -18,7 +18,9 @@ import com.example.artefactos.views.components.H1WithoutBold
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SuccessScreen() {
+fun SuccessScreen(
+    onClick: () -> Unit
+) {
     BaseScreen(
         topBar = {
             TopAppBar(
@@ -46,7 +48,10 @@ fun SuccessScreen() {
                 modifier = Modifier.background(MaterialTheme.colorScheme.primary),
                 description = "La gestión de huellas se realizó correctamente. Tus ajustes biométricos han sido actualizados y están listos para usarse.",
                 animation = R.raw.successs,
-                buttonDescription = "Regresar"
+                buttonDescription = "Regresar",
+                onActionClick = {
+                    onClick()
+                }
             )
         }
     )

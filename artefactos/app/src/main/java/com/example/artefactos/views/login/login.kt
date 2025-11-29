@@ -17,7 +17,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.artefactos.views.nav.main
+import com.example.artefactos.views.nav.Home
 
 @Composable
 fun login(
@@ -49,7 +49,7 @@ fun login(
         Button(
             onClick = {
                 if (vm.login()) {
-                    nav.navigate(main)
+                    nav.navigate(Home)
                 }
             },
             modifier = Modifier.padding(top = 16.dp)

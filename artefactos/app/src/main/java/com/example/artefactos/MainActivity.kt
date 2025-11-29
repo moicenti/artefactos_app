@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.artefactos.views.success.SuccessScreen
+import com.example.artefactos.ui.theme.ArtefactosTheme
+import com.example.artefactos.views.nav.navhost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ArtefactosTheme(dynamicColor = false) {
-                SuccessScreen()
+                navhost()
             }
         }
     }

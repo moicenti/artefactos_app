@@ -18,7 +18,9 @@ import com.example.artefactos.views.components.H1WithoutBold
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RemoveFingerScreen() {
+fun RemoveFingerScreen(
+    onRemoveFingerClick: () -> Unit
+) {
     BaseScreen(
         topBar = {
             TopAppBar(
@@ -46,7 +48,10 @@ fun RemoveFingerScreen() {
                 modifier = Modifier.background(MaterialTheme.colorScheme.primary),
                 description = "Revisa las huellas registradas en tu dispositivo y elimina las que ya no necesites. Mantén tu acceso biométrico actualizado y seguro desde aquí.",
                 animation = R.raw.delete,
-                buttonDescription = "Eliminar huella"
+                buttonDescription = "Eliminar huella",
+                onActionClick = {
+                    onRemoveFingerClick()
+                }
             )
         }
     )

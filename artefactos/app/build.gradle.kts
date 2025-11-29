@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -44,7 +45,6 @@ android {
 dependencies {
 
 
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation("com.airbnb.android:lottie-compose:6.6.6")
+    implementation("com.airbnb.android:lottie-compose:6.7.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

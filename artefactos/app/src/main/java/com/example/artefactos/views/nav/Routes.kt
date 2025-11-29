@@ -6,4 +6,13 @@ import kotlinx.serialization.Serializable
 object login;
 
 @Serializable
-object main;
+object Home;
+
+@Serializable
+object AddFinger;
+
+@Serializable
+object RemoveFinger;
+
+@Serializable
+object Success;
