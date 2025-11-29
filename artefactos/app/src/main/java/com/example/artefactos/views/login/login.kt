@@ -17,13 +17,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.artefactos.views.nav.main
+import com.example.artefactos.views.nav.Main
 
 @Composable
 fun login(
     nav: NavController,
     vm: loginViewModel = viewModel()
-          ){
+) {
     val user by vm.user.collectAsState()
     val password by vm.password.collectAsState()
     val error by vm.error.collectAsState()
@@ -48,8 +48,8 @@ fun login(
 
         Button(
             onClick = {
-                if (vm.login()) {
-                    nav.navigate(main)
+                vm.login {
+                    nav.navigate(Main)
                 }
             },
             modifier = Modifier.padding(top = 16.dp)
@@ -61,6 +61,4 @@ fun login(
             Text(error, color = MaterialTheme.colorScheme.error)
         }
     }
-
-
 }
