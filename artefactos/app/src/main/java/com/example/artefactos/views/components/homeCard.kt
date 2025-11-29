@@ -23,7 +23,8 @@ import com.example.artefactos.core.model.enums.TopLevelDestination
 @Composable
 fun HomeCard(
     destination: TopLevelDestination,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     val baseHeight = 200.dp
     val totalHeight = baseHeight + destination.extraHeight
@@ -38,7 +39,8 @@ fun HomeCard(
         colors = CardDefaults.cardColors(
             containerColor = destination.color
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+        onClick = onClick
     ) {
 
         Column(

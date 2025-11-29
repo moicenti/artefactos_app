@@ -18,7 +18,9 @@ import com.example.artefactos.views.components.H1WithoutBold
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddFingerScreen() {
+fun AddFingerScreen(
+    onAddFingerClick: () -> Unit
+) {
     BaseScreen(
         topBar = {
             TopAppBar(
@@ -46,7 +48,10 @@ fun AddFingerScreen() {
                 modifier = Modifier.background(MaterialTheme.colorScheme.primary),
                 description = "Agrega nuevas huellas a tu dispositivo y mantén tu acceso biométrico rápido y seguro.",
                 animation = R.raw.securebox,
-                buttonDescription = "Agregar huella"
+                buttonDescription = "Agregar huella",
+                onActionClick = {
+                    onAddFingerClick()
+                }
             )
         }
     )

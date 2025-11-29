@@ -6,4 +6,13 @@ import kotlinx.serialization.Serializable
 object LoginRoute
 
 @Serializable
+object AddFinger;
+
+@Serializable
+object RemoveFinger;
+
+@Serializable
+object Success;
+
+@Serializable
 object Main

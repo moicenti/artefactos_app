@@ -13,22 +13,23 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.rememberLottieComposition
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
 fun BaseActionScreen(
     modifier: Modifier = Modifier,
     description: String,
     animation: Int,
-    buttonDescription: String
+    buttonDescription: String,
+    onActionClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -61,7 +62,7 @@ fun BaseActionScreen(
         Spacer(modifier = Modifier.height(60.dp))
 
         Button(
-            onClick = { /* TODO */ },
+            onClick = onActionClick,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp),

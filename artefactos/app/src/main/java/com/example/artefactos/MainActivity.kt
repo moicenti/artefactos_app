@@ -1,16 +1,20 @@
 package com.example.artefactos
 
-import AppNavHost
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.example.artefactos.ui.theme.ArtefactosTheme
+import com.example.artefactos.views.nav.AppNavHost
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AppNavHost()
+            ArtefactosTheme(dynamicColor = false) {
+                AppNavHost()
+            }
         }
     }
 }
