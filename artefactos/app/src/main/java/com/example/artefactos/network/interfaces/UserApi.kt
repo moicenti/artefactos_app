@@ -7,13 +7,14 @@ import com.example.artefactos.data.LoginRequest
 import com.example.artefactos.data.LoginResponse
 import com.example.artefactos.data.MessageResponse
 import com.example.artefactos.network.models.User
+import com.example.artefactos.network.models.UserR
 import retrofit2.Call
 import retrofit2.http.*
 
 interface UsersApi {
 
     @POST("users")
-    fun createUser(@Body user: User): Call<ApiResponse<User>>
+    fun createUser(@Body user: UserR): Call<ApiResponse<User>>
 
     @GET("users")
     fun getUsers(): Call<ApiResponse<List<User>>>

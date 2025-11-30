@@ -30,20 +30,20 @@ data class SendCommandRequest(
 )
 
 data class EnrollRequest(
-    val deviceId: String
+    val deviceId: String = "esp32_001" // siempre se envía este valor
 )
 
+
 data class DeleteFingerprintRequest(
-    val deviceId: String
+    val deviceId: String = "esp32_001"
 )
 
 data class EmergencyLockRequest(
-    val deviceId: String
+    val deviceId: String = "esp32_001"
 )
 
 data class DeleteUserRequest(
-    val deviceId: String,
-    val apiKey: String
+    val deviceId: String = "esp32_001"
 )
 
 data class MessageResponse(

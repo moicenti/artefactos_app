@@ -18,7 +18,7 @@ enum class TopLevelDestination(
     val extraHeight: Dp = 0.dp
 ) {
     REMOVE_FINGER(
-        "Eliminar dedo",
+        "Admin",
         R.drawable.delete,
         true,
         color = colorCardGreen,

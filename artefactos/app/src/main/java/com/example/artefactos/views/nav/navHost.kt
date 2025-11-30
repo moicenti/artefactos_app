@@ -12,11 +12,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.artefactos.views.addFinger.AddFingerScreen
+import com.example.artefactos.views.addFinger.AddFingerScreenViewModel
 import com.example.artefactos.views.home.Home
 import com.example.artefactos.views.login.login
 import com.example.artefactos.views.login.loginViewModel
-import com.example.artefactos.views.removeFinger.RemoveFingerScreen
+import com.example.artefactos.views.removeFinger.Admin
 import com.example.artefactos.views.success.SuccessScreen
+
 
 @Composable
 fun AppNavHost() {
@@ -30,8 +32,8 @@ fun AppNavHost() {
                 .padding(innerPadding)
         ) {
             composable<LoginRoute> {
-                val vm: loginViewModel = viewModel()
-                login(nav = navController, vm = vm)
+                val loginVM: loginViewModel = viewModel(factory = loginViewModel.factory)
+                login(nav = navController, vm = loginVM)
             }
             composable<Main> {
                 Home(
@@ -40,13 +42,15 @@ fun AppNavHost() {
                 )
             }
             composable<AddFinger> {
+                val vm: AddFingerScreenViewModel = viewModel(factory = AddFingerScreenViewModel.factory)  ;
                 AddFingerScreen(
-                    onAddFingerClick = navController::navigateToSuccess
+                    navController,
+                    vm
                 )
             }
-            composable<RemoveFinger> {
-                RemoveFingerScreen(
-                    onRemoveFingerClick = navController::navigateToSuccess
+            composable<admin> {
+                Admin(
+                    navController
                 )
             }
             composable<Success> {
@@ -63,7 +67,7 @@ fun AppNavHost() {
 }
 
 fun NavController.navigateToAddFinger() = navigate(AddFinger)
-fun NavController.navigateToRemoveFinger() = navigate(RemoveFinger)
+fun NavController.navigateToRemoveFinger() = navigate(admin)
 fun NavController.navigateToSuccess() = navigate(Success)
 fun NavController.navigateToHome() = navigate(Main) {
     popUpTo(graph.findStartDestination().id) {

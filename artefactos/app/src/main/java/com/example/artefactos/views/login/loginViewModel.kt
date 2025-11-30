@@ -1,7 +1,12 @@
 package com.example.artefactos.views.login
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.artefactos.artefactosAPP
 import com.example.artefactos.data.ApiResponse
 import com.example.artefactos.data.LoginRequest
 import com.example.artefactos.data.LoginResponse
@@ -13,7 +18,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.awaitResponse
 
-class loginViewModel : ViewModel() {
+class loginViewModel(
+    private val saveToken: (String) -> Unit,
+    private val saveUser: (String) -> Unit
+)
+ : ViewModel() {
+
     private val _error = MutableStateFlow("")
     val error: StateFlow<String> = _error.asStateFlow()
 
@@ -49,6 +59,9 @@ class loginViewModel : ViewModel() {
 
                     if (!tokenValue.isNullOrEmpty()) {
                         _token.value = tokenValue
+                        saveToken(tokenValue)
+                        saveUser(_user.value)
+
                         _error.value = ""
                         onSuccess()
                     } else {
@@ -63,4 +76,23 @@ class loginViewModel : ViewModel() {
             }
         }
     }
+
+    companion object{
+        val factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val app = this[APPLICATION_KEY] as? artefactosAPP
+                    ?: throw IllegalStateException("App is not artefacctos")
+                loginViewModel(
+                    saveToken = app::changeToken,
+                    saveUser = app::changeUser
+                )
+            }
+        }
+
+    }
+
 }
+
+
+
+

@@ -9,7 +9,7 @@ object LoginRoute
 object AddFinger;
 
 @Serializable
-object RemoveFinger;
+object admin;
 
 @Serializable
 object Success;

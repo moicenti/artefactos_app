@@ -46,7 +46,7 @@ fun SuccessScreen(
         content = {
             BaseActionScreen(
                 modifier = Modifier.background(MaterialTheme.colorScheme.primary),
-                description = "La gestión de huellas se realizó correctamente. Tus ajustes biométricos han sido actualizados y están listos para usarse.",
+                description = "el proceso fue exitoso, ya puede agregar su huella",
                 animation = R.raw.successs,
                 buttonDescription = "Regresar",
                 onActionClick = {
